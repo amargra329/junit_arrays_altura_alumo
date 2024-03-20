@@ -18,13 +18,11 @@ public class AlturaAlumno { // Recorrer dos arrays con la misma longitud
 
 
         // BUCLE MENU
-        while (!salir)
-        {
+        while (!salir) {
             // FUNCION MENU CON OPCIONES (ME DEVUELVE LA OPCION QUE HE PULSADO)
             opcion = menu();
 
-            switch (opcion)
-            {
+            switch (opcion) {
                 case 1: // Pide nombre, añade al alumno y por defecto le pone 1.5m de altura
 
                     System.out.println("Inserta el nombre del nuevo alumno:");
@@ -57,8 +55,7 @@ public class AlturaAlumno { // Recorrer dos arrays con la misma longitud
                     System.out.println("Introduce el incremento de altura:");
                     double incremento = sc.nextDouble();
 
-                    for (int i = 0; i < alturas.length; i++)
-                    {
+                    for (int i = 0; i < alturas.length; i++) {
                         alturas[i] = alturas[i] + incremento;
                     }
                     break;
@@ -67,13 +64,10 @@ public class AlturaAlumno { // Recorrer dos arrays con la misma longitud
 
                     double[] posicionMaximo = calculaMaximo(alturas);
 
-                    if(alumnos.length == 0)
-                    {
+                    if (alumnos.length == 0) {
                         System.out.println("Aun no hay registro de alumnos");
-                    }
-                    else
-                    {
-                        System.out.println("El alumno más alto es " + alumnos[(int)posicionMaximo[0]] + ", y mide " + posicionMaximo[1] + " metros");
+                    } else {
+                        System.out.println("El alumno más alto es " + alumnos[(int) posicionMaximo[0]] + ", y mide " + posicionMaximo[1] + " metros");
                     }
                     break;
 
@@ -98,10 +92,10 @@ public class AlturaAlumno { // Recorrer dos arrays con la misma longitud
 
     /**
      * Imprime el menu y devuelve la opción elegida
+     *
      * @return usuario
      */
-    static int menu()
-    {
+    static int menu() {
         int usuario = 0;
 
         System.out.println("\nElige la opción que quieres realizar:");
@@ -121,39 +115,37 @@ public class AlturaAlumno { // Recorrer dos arrays con la misma longitud
 
     /**
      * Añade un alumno al final del array
+     *
      * @param array,nombre
      * @return nuevo
      */
-    static String[] añadeNombre(String[] array, String nombre)
-    {
-        String[] nuevo = new String[array.length+1];
+    static String[] añadeNombre(String[] array, String nombre) {
+        String[] nuevo = new String[array.length + 1];
 
-        for (int i = 0; i < array.length; i++)
-        {
+        for (int i = 0; i < array.length; i++) {
             nuevo[i] = array[i];
         }
 
-        nuevo[nuevo.length-1] = nombre;
+        nuevo[nuevo.length - 1] = nombre;
 
         return nuevo;
     }
 
     /**
      * Añade una altura al final del array con un valor por defecto
+     *
      * @param array
      * @return nuevo
      */
-    static double[] añadeAltura(double[] array)
-    {
-        double[] nuevo = new double[array.length+1];
+    static double[] añadeAltura(double[] array) {
+        double[] nuevo = new double[array.length + 1];
         double alturaPorDefecto = 1.5;
 
-        for (int i = 0; i < array.length; i++)
-        {
+        for (int i = 0; i < array.length; i++) {
             nuevo[i] = array[i];
         }
 
-        modificaAltura(nuevo, nuevo.length-1, alturaPorDefecto);
+        modificaAltura(nuevo, nuevo.length - 1, alturaPorDefecto);
         //nuevo[nuevo.length-1] = alturaPorDefecto; //lo comento porque paso a hacerlo con una funcion
 
         return nuevo;
@@ -161,34 +153,31 @@ public class AlturaAlumno { // Recorrer dos arrays con la misma longitud
 
     /**
      * Modifica la altura de una posicion dada del array por un valor tambien dado
+     *
      * @param array,posicion,altura
      */
-    static void modificaAltura(double[] array, int posicion, double altura)
-    {
-        if(posicion>=0 && posicion<array.length) // Controlo que la posicion no esté fuera del rango
+    static void modificaAltura(double[] array, int posicion, double altura) {
+        if (posicion >= 0 && posicion < array.length) // Controlo que la posicion no esté fuera del rango
         {
             array[posicion] = altura;
         }
-
     }
 
     /**
      * Busca la coincidencia de un nombre en el array y devuelve su posición
      * o devuelve -1 si no lo encuentra
+     *
      * @param array,nombre
      * @return posicionEncontrada
      */
-    static int buscaNombre(String[] array, String nombre)
-    {
+    static int buscaNombre(String[] array, String nombre) {
         int posicionEncontrada = -1;
         int index = 0;
 
         // Mientras no llegue al final de array y el valor de posicón no haya cambiado
-        while(index <= array.length-1 && posicionEncontrada == -1)
-        {
+        while (index <= array.length - 1 && posicionEncontrada == -1) {
             // Guardo la posición en el caso de encontrar un nombre igual
-            if(array[index].equals(nombre))
-            {
+            if (array[index].equals(nombre)) {
                 posicionEncontrada = index;
             }
             index++;
@@ -200,12 +189,11 @@ public class AlturaAlumno { // Recorrer dos arrays con la misma longitud
 
     /**
      * Pinta la tabla de alturas
+     *
      * @param arrayNombre,arrayAltura
      */
-    static void mostrar(String[] arrayNombre, double[] arrayAltura)
-    {
-        for (int i = 0; i < arrayNombre.length; i++)
-        {
+    static void mostrar(String[] arrayNombre, double[] arrayAltura) {
+        for (int i = 0; i < arrayNombre.length; i++) {
             System.out.println(arrayNombre[i] + "\t|   " + arrayAltura[i]);
         }
     }
@@ -214,22 +202,19 @@ public class AlturaAlumno { // Recorrer dos arrays con la misma longitud
     /**
      * Calcula el valor maximo de un array y su posicion
      * y devuelve ambos valores en un array
+     *
      * @param array
      * @return resultadoMaximo
      */
-    static double[] calculaMaximo(double[] array)
-    {
+    static double[] calculaMaximo(double[] array) {
         double[] resultadoMaximo = new double[2];
 
-        if(array.length>0) // Controlo que el array no esté vacío
-        {
+        if (array.length > 0) { // Controlo que el array no esté vacío
             double maximo = array[0];
             double posicion = 0;
 
-            for (int i = 0; i < array.length; i++)
-            {
-                if(array[i]>maximo)
-                {
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] > maximo) {
                     maximo = array[i];
                     posicion = i;
                 }
@@ -237,27 +222,25 @@ public class AlturaAlumno { // Recorrer dos arrays con la misma longitud
             resultadoMaximo[0] = posicion;
             resultadoMaximo[1] = maximo;
         }
-
         return resultadoMaximo;
     }
 
     /**
      * Calcula el valor medio de un array
+     *
      * @param array
      * @return media
      */
-    static double calculaMedia(double[] array)
-    {
+    static double calculaMedia(double[] array) {
         double media = 0;
 
-        for (int i = 0; i < array.length; i++)
-        {
+        for (int i = 0; i < array.length; i++) {
             media = media + array[i];
         }
 
-        if(array.length > 0) // controlo la division por cero
+        if (array.length > 0) // controlo la division por cero
         {
-            media = media/(array.length);
+            media = media / (array.length);
         }
 
         return media;
